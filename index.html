@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Country Explorer</title>
+    <link rel="stylesheet" href="./libraries/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Country Explorer</a>
+        <div class="ml-auto">
+            <strong class="mr-2">View:</strong>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input value="vertical" type="radio" id="viewRadioVertical" name="viewRadio" class="custom-control-input" checked="checked">
+                <label class="custom-control-label" for="viewRadioVertical">Vertical</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input value="horizontal" type="radio" id="viewRadioHorizontal" name="viewRadio" class="custom-control-input">
+                <label class="custom-control-label" for="viewRadioHorizontal">Horizontal</label>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="border py-1 px-2">
+                    <form id="searchForm">
+                        <div class="row">
+                            <strong class="col-md-12">Filter</strong>
+                            <div class="col" id="attributesCheck"></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="searchSelect">Search by</label>
+                                    </div>
+                                    <select class="custom-select" id="searchSelect">
+                                        <option value="all" selected>Choose...</option>
+                                        <option value="name">Name</option>
+                                        <option value="code">Code</option>
+                                        <option value="currency">Currency</option>
+                                        <option value="language">Language</option>
+                                        <option value="capital">Capital City</option>
+                                        <option value="callingCode">Calling Code</option>
+                                        <option value="region">Region</option>
+                                        <option value="regionalBloc">Regional Bloc</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group d-none filterValue" id="nameFilterValue">
+                                    <input type="text" id="nameFilterValueInput" class="form-control" placeholder="Country name">
+                                    <small class="form-text text-muted">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="filterFullNameCheck">
+                                            <label class="custom-control-label" for="filterFullNameCheck">Search by Full name</label>
+                                        </div>
+                                    </small>
+                                </div>
+                                <div class="form-group d-none filterValue" id="codeFilterValue">
+                                    <input type="text" id="codeFilterValueInput" class="form-control" placeholder="Country code">
+                                    <small class="form-text text-muted">Search by list of ISO 3166-1 2-letter or 3-letter country codes. Example: us, usd, gb, gbr</small>
+                                </div>
+                                <div class="form-group d-none filterValue" id="currencyFilterValue">
+                                    <input type="text" id="currencyFilterValueInput" class="form-control" placeholder="Country currency">
+                                    <small class="form-text text-muted">Search by ISO 4217 currency code. Example: usd, eur</small>
+                                </div>
+                                <div class="form-group d-none filterValue" id="languageFilterValue">
+                                    <input type="text" id="languageFilterValueInput" class="form-control" placeholder="Country language">
+                                    <small class="form-text text-muted">Search by ISO 639-1 language code. Example: ja, ko</small>
+                                </div>
+                                <div class="form-group d-none filterValue" id="capitalFilterValue">
+                                    <input type="text" id="capitalFilterValueInput" class="form-control" placeholder="Country capital">
+                                    <small class="form-text text-muted">Search by capital city</small>
+                                </div>
+                                <div class="form-group d-none filterValue" id="callingCodeFilterValue">
+                                    <input type="text" id="callingCodeFilterValueInput" class="form-control" placeholder="Country calling code">
+                                    <small class="form-text text-muted">Search by calling code. Example: 372</small>
+                                </div>
+                                <div class="form-group d-none filterValue" id="regionFilterValue">
+                                    <input type="text" id="regionCodeFilterValueInput" class="form-control" placeholder="Country region">
+                                    <small class="form-text text-muted">Search by region: Africa, Americas, Asia, Europe, Oceania</small>
+                                </div>
+                                <div class="form-group d-none filterValue" id="regionalBlocFilterValue">
+                                    <select class="form-control" id="regionCodeFilterValueSelect">
+                                        <option value="" selected>Select Regional bloc...</option>
+                                        <option value="eu">European Union (EU)</option>
+                                        <option value="efta">European Free Trade Association (EFTA)</option>
+                                        <option value="caricom">Caribbean Community (CARICOM)</option>
+                                        <option value="pa">Pacific Alliance (PA)</option>
+                                        <option value="au">African Union (AU)</option>
+                                        <option value="usan">Union of South American Nations (USAN)</option>
+                                        <option value="eeu">Eurasian Economic Union (EEU)</option>
+                                        <option value="al">Arab League (AL)</option>
+                                        <option value="asean">Association of Southeast Asian Nations (ASEAN)</option>
+                                        <option value="cais">Central American Integration System (CAIS)</option>
+                                        <option value="cefta">Central European Free Trade Agreement (CEFTA)</option>
+                                        <option value="nafta">North American Free Trade Agreement (NAFTA)</option>
+                                        <option value="saarc">South Asian Association for Regional Cooperation (SAARC)</option>
+                                    </select>
+                                    <small class="form-text text-muted">Search by regional bloc</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary btn-block">Search...</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="content" class="row mt-4"></div>
+    </div>
+
+    <script src="./libraries/jquery/jquery-3.4.1.min.js"></script>
+    <script src="./libraries/popper.js/popper.min.js"></script>
+    <script src="./libraries/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
